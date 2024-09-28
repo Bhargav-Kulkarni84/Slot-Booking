@@ -1,0 +1,45 @@
+/* Style the list container */
+.user-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Style individual list items */
+.user-list li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+/* Add Bootstrap classes for some styling */
+.user-link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add hover effects to the links */
+.user-link:hover {
+    color: #0056b3;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a hover effect to the list item */
+.user-list li:hover {
+    border-color: #007bff;
+}
+
+/* Add padding and centering for smaller devices */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .user-link {
+        font-size: 1rem;
+    }
+}

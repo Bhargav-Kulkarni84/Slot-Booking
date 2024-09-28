@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Slot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        h4 {
+            margin: 10px 0;
+        }
+        form {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Edit Slot</h2>
+    
+    <form action="/slot/<%= slot.id %>/edit?_method=PUT" method="POST">
+        <div>
+            <label for="slot_number">Slot Number:</label>
+            <input type="number" id="slot_number" name="slot_number" placeholder="Slot Number" value="<%= slot.slot_number %>" required>
+        </div>
+        <div>
+            <label for="slot_date">Date:</label>
+            <input type="text" id="slot_date" name="slot_date" placeholder="Slot Date" value="<%= slot.slot_date %>" required>
+        </div>
+        <div>
+            <label for="start_time">Start Time:</label>
+            <input type="text" id="start_time" name="start_time" placeholder="Slot Start Time" value="<%= slot.start_time %>" required>
+        </div>
+        <div>
+            <label for="end_time">End Time:</label>
+            <input type="text" id="end_time" name="end_time" placeholder="Slot End Time" value="<%= slot.end_time %>" required>
+        </div>
+        <div>
+            <label for="slot_duration">Slot Duration (in min):</label>
+            <input type="text" id="slot_duration" name="slot_duration" placeholder="Slot Duration" value="<%= slot.slot_duration %>" required>
+        </div>
+        <div>
+            <label for="slot_isBooked">Is Booked:</label>
+            <input type="text" id="slot_isBooked" name="slot_isBooked" placeholder="Slot Status" value="<%= slot.slot_isBooked %>" required>
+        </div>
+        <div>
+            <label for="available_seats">Seats Available:</label>
+            <input type="text" id="available_seats" name="available_seats" placeholder="Slot Seats" value="<%= slot.available_seats %>" required>
+        </div>
+        <div>
+            <button type="submit">Update Slot</button>
+        </div>
+    </form>
+
+</body>
+</html>

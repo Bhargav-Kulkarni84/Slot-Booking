@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+        .slot-info {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto 20px auto;
+        }
+        .slot-info h4 {
+            margin: 10px 0;
+        }
+        .actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .actions a,
+        .actions button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .actions a:hover,
+        .actions button:hover {
+            background-color: #0056b3;
+        }
+        /* Specific styles for the delete button */
+        .actions form {
+            display: inline;
+        }
+        .actions form button {
+            background-color: #dc3545;
+        }
+        .actions form button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Slot Details</h2>
+
+    <div class="slot-info">
+        <h4>Slot Number: <%= slot.slot_number %></h4>
+        <h4>Slot Number: <%= slot.slot_date %></h4>
+        <h4>Time: <%= slot.start_time %> - <%= slot.end_time %></h4>
+        <h4>Duration: <%= slot.slot_duration %> mins</h4>
+        <h4>Status: <%= slot.slot_isBooked ? 'Booked' : 'Available' %></h4>
+        <h4>Available Seats: <%= slot.available_seats %></h4>
+    </div>
+
+    <div class="actions">
+        <!-- Link to edit the slot details -->
+        <a href="/admin/slot/<%= slot.id %>/edit">Change Details</a>
+        
+        <!-- Form to delete the slot -->
+        <form action="/slot/<%= slot.id %>/delete?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this slot?');">
+            <button type="submit">Delete Slot</button>
+        </form>
+    </div>
+
+</body>
+</html>

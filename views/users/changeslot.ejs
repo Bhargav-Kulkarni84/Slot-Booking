@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Booking</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        h4, h5 {
+            text-align: center;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        h4 {
+            font-size: 1.2em;
+        }
+        h5 {
+            font-size: 1em;
+        }
+
+        /* Form Styles */
+        form {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Slot Option Styles */
+        .slot-option {
+            margin: 10px auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            transition: background-color 0.3s, border-color 0.3s;
+            cursor: pointer;
+            max-width: 500px;
+        }
+        .slot-option:hover {
+            border-color: #007bff;
+            background-color: #e7f1ff;
+        }
+        .slot-option.selected {
+            border-color: #007bff;
+            background-color: #e7f1ff;
+        }
+
+        /* Container for Available Slots */
+        #available-slots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            form, .slot-option {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Current Slot Details Section -->
+    <h2>Your Current Slot Details</h2>
+    <h4>Slot Number: <%= slot.slot_number %></h4>
+    <h4>Time: <%= slot.start_time %> - <%= slot.end_time %></h4>
+    <h4>Duration: <%= slot.slot_duration %> mins</h4>
+
+    <!-- Choose a New Slot Section -->
+    <h2>Choose a New Slot</h2>
+    <div id="available-slots">
+        <% if(slots.length === 0) { %>
+            <p style="text-align: center; color: #dc3545;">No available slots at the moment. Please check back later.</p>
+        <% } else { %>
+            <% for (let availableSlot of slots) { %>
+                <% if(!availableSlot.slot_isBooked) { %>
+                    <div class="slot-option" data-slot-id="<%= availableSlot._id %>">
+                        <h4>Slot Number: <%= availableSlot.slot_number %></h4>
+                        <h5>Status: <%= availableSlot.slot_isBooked ? 'Unavailable' : 'Available' %></h5>
+                        <h5>Time: <%= availableSlot.start_time %> - <%= availableSlot.end_time %></h5>
+                        <h5>Duration: <%= availableSlot.slot_duration %> mins</h5>
+                    </div>
+                <% } %>
+            <% } %>
+        <% } %>
+    </div>
+
+    <!-- Confirm Your Details Section -->
+    <h2>Confirm Your Details</h2>
+    <form action="/changebooking/<%= user.id %>/?_method=PUT" method="POST">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email" value="<%= user.email %>" required>
+        </div>
+        <div>
+            <label for="number">Number:</label>
+            <input type="number" id="number" name="number" placeholder="Number" value="<%= user.number %>" required>
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Name" value="<%= user.name %>" required>
+        </div>
+        <div>
+            <label for="regno">Reg No:</label>
+            <input type="text" id="regno" name="regno" placeholder="Reg No" value="<%= user.regno %>" required>
+        </div>
+        <!-- Hidden Input to Store Selected Slot ID -->
+        <div>
+            <input type="hidden" id="slot_id" name="slot_id" value="<%= slot._id %>">
+        </div>
+        <div>
+            <button type="submit">Update Booking</button>
+        </div>
+    </form>
+
+    <!-- JavaScript for Slot Selection -->
+    <script>
+        // Select all slot options
+        const slotOptions = document.querySelectorAll('.slot-option');
+
+        slotOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Deselect all options
+                slotOptions.forEach(opt => opt.classList.remove('selected'));
+
+                // Select the clicked option
+                this.classList.add('selected');
+
+                // Update the hidden input field with the selected slot ID
+                const selectedSlotId = this.getAttribute('data-slot-id');
+                document.getElementById('slot_id').value = selectedSlotId;
+            });
+        });
+    </script>
+
+</body>
+</html>
