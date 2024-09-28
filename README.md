@@ -30,12 +30,29 @@ The Slot Booking System is a web application designed to facilitate the booking 
 
 ## Limitations
 The current implementation of the Slot Booking System does not have the following features:
+- **Admin Authentication**
 - **Client and Server-Side Data Validation**
 - **Error Handling**
 - **Cloud Database Integration**
 - **Flexibility for Users to Modify Their Respective Slots**
+- **Deployment** (Not yet deployed)
 
 ## ChatGPT Assistance
 ChatGPT was utilized in the following areas of the project:
-1. **Nodemailer and Cron Integration**: For setting up automated email reminders to users 10 minutes before their scheduled slot.
-2. **Styling**: Assistance with front-end styling for a user-friendly interface.
+1. **Nodemailer and Cron Integration:** For setting up automated email reminders to users 10 minutes before their scheduled slot.
+2. **Styling:** Assistance with front-end styling for a user-friendly interface.
+
+## Future Enhancements
+- Implementing admin authentication for secure access.
+- Adding client and server-side data validation to enhance security.
+- Improving error handling to provide better user feedback.
+- Exploring cloud database options for improved scalability.
+- Allowing users to modify their bookings.
+- Deploying the application for public access.
+
+## Installation
+Instructions on how to install and run the Slot Booking System will be added here.
+
+## Usage
+Instructions on how to use the Slot Booking System will be added here.
+
