@@ -4,25 +4,36 @@
 The Slot Booking System is a web application designed to facilitate the booking of scheduled time slots for users. It collects user details and allows them to book slots based on administrator-defined timelines. The system also features automated email reminders sent to users 10 minutes prior to their scheduled slots.
 
 ## Features
-- **User Information Collection:** 
-  - Collects user details including email, phone number, name, and registration number.
+
+### 1. User Information Collection
+- **Collects user details** including email, phone number, name, and registration number.
+
+### 2. Slot Scheduling
+- **Users can book available time slots** defined by the administrator.
   
-- **Slot Scheduling:**
-  - Users can book available time slots defined by the administrator.
-  - Duration constraints can be set for each slot by the administrator.
+  ![Available Slots Page](Images/AvailableSlotsPage.png)
+  ![Available Slots Page](Images/AvailableSlotsPage-2.png)
+  Book Available Slot
+  ![Book Available Slot Page](Images/BookAvailableSlotPage.png)
 
-- **Automated Reminder System:**
-  - Sends an automated email reminder to users 10 minutes before their scheduled slot.
 
-- **Administrator Interface:**
-  - Allows administrators to manage and define available slots and duration constraints.
+- **Duration constraints** can be set for each slot by the administrator.
 
-- **Database Integration:**
-  - User details and slot bookings are securely stored in a database.
+### 3. Automated Reminder System
+- **Sends automated email reminders** to users 10 minutes before their scheduled slot.
 
-- **User-Friendly Interface:**
-  - Provides a simple and intuitive interface for users to book slots and receive confirmations.
+### 4. Administrator Interface
+- **Allows administrators to manage** and define available slots and duration constraints.
 
+  ![Admin Slot Details](Images/AdmingSlotDetails.png)
+  ![Admin Add New Slot](Images/AdmingNewSlot.png)
+  ![Admin Slot Change](Images/AdminSlotChange.png)
+
+### 5. User-Friendly Interface
+- **Provides an intuitive interface** for users to book slots and receive confirmations.
+
+  ![User Slot Details](Images/UserSlotDetails.png)
+  
 ## Technologies Used
 - **Frontend:** HTML, CSS, JavaScript (or a framework like React, Vue, etc.)
 - **Backend:** Node.js, Express.js
@@ -55,4 +66,3 @@ Instructions on how to install and run the Slot Booking System will be added her
 
 ## Usage
 Instructions on how to use the Slot Booking System will be added here.
-
